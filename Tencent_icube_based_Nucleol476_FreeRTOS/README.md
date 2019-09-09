@@ -23,4 +23,4 @@ Tencent_icube_based_Nucleol476_FreeRTOS 是[腾讯云设备端C-SDK](https://git
 
 
 ## 快速入门
-各示例详细用法参考doc目录的 [tencent_icube_quick_start_guide.pptx](https://git.code.oa.com/iotcloud_teamIII/qcloud-iot-c-sdk-porting-examples/blob/master/doc/tencent_icube_quick_start_guide.pptx)
+各示例详细用法参考doc目录的 [tencent_icube_quick_start_guide.pptx](https://git.code.oa.com/iotcloud_teamIII/qcloud-iot-c-sdk-porting-examples/blob/master/Tencent_icube_based_Nucleol476_FreeRTOS/doc/tencent_icube_quick_start_guide.pptx)
