@@ -21,7 +21,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stdio.h"
 #include "main.h"
-#include "cmsis_os.h"
 #include "board.h"
 #include "version.h"
 #include "config.h"
@@ -37,8 +36,10 @@ extern void light_demo_task(void);
 extern void shell_task(void);
 extern void shell_handle(void);
 
+#ifdef OS_USED
 osThreadId exampleTaskHandle;
 osThreadId shellTaskHandle;
+#endif
 
 /* @brief  show memory info.
 *

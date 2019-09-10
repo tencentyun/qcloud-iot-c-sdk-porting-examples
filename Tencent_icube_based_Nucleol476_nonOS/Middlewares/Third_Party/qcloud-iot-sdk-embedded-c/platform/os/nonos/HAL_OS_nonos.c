@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
-#include "cmsis_os.h"
 #include "qcloud_iot_import.h"
 #include "stm32l4xx_hal.h"
 

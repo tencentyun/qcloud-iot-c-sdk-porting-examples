@@ -391,11 +391,6 @@
               <FilePath>../Src/main.c</FilePath>
             </File>
             <File>
-              <FileName>freertos.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/freertos.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32l4xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32l4xx_it.c</FilePath>
@@ -766,14 +761,14 @@
               <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_Device_nonos.c</FilePath>
             </File>
             <File>
-              <FileName>HAL_OS_nonos.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_OS_nonos.c</FilePath>
-            </File>
-            <File>
               <FileName>HAL_Timer_nonos.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_Timer_nonos.c</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_OS_nonos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_OS_nonos.c</FilePath>
             </File>
           </Files>
         </Group>

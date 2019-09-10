@@ -2,7 +2,6 @@
 #include <string.h>
 
 #include "config.h"
-#include "cmsis_os.h"
 #include "shell.h"
 #include "stm32l4xx_hal.h"
 #include "utils_ringbuff.h"
