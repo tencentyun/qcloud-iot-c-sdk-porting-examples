@@ -1,0 +1,45 @@
+menu "QCloud IoT demo Configuration"
+
+config QCLOUD_IOT_EXPLORER_ENABLED
+    bool "To demo IoT Explorer (y) or IoT Hub (n)"
+    default y
+    help
+        To demo IoT Explorer (y) or IoT Hub (n)
+
+config DEMO_WIFI_SMARTCONFIG
+    bool "To use smartconfig or not"
+    default y
+    help
+        To use smartconfig or not
+
+config DEMO_WIFI_SSID
+    string "WiFi SSID"
+    default "YOUR_WIFI"
+    help
+        wifi ssid
+
+config DEMO_WIFI_PASSWORD
+    string "WiFi PASSWORD"
+    default "12345678"
+    help
+        wifi password
+        
+config QCLOUD_IOT_PRODUCT_ID
+    string "PRODUCT ID from QCloud IoT platform"
+    default "PRODUCT_ID"
+    help
+        product ID
+
+config QCLOUD_IOT_DEVICE_NAME
+    string "DEVICE NAME from QCloud IoT platform"
+    default "device1"
+    help
+        device name
+
+config QCLOUD_IOT_DEVICE_SECRET
+    string "DEVICE SECRET from QCloud IoT platform"
+    default "qwertyuiopasdfghh"
+    help
+        device secret
+
+endmenu
