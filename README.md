@@ -6,5 +6,6 @@ qcloud-iot-c-sdk-porting-examples 是[腾讯云设备端C-SDK](https://github.co
 | 名称            | 说明 |
 | ----            | ---- |
 | Tencent_icube_based_Nucleol476_FreeRTOS           | 基于STM32+esp8266+FreeRTOS的移植示例 |
-| Tencent_icube_based_Nucleol476_nonOS           | 基于STM32+esp8266+无RTOS的移植示例 |
+| Tencent_icube_based_Nucleol476_nonOS          	| 基于STM32+esp8266+无RTOS的移植示例 |
+| QCloud_IoT_ESP8266_RTOS           				| ESP8266+FreeRTOS+lwip SOC方式移植示例 |
 | README.md       |使用说明 |
