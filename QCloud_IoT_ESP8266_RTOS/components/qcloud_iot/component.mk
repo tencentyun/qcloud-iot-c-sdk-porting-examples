@@ -4,8 +4,8 @@
 
 COMPONENT_ADD_INCLUDEDIRS := \
 	qcloud_iot_c_sdk/include \
-	qcloud_iot_c_sdk/sdk_src/internal_inc \
-	port/include
+    qcloud_iot_c_sdk/include/exports \
+	qcloud_iot_c_sdk/sdk_src/internal_inc
 
 COMPONENT_SRCDIRS := \
 	qcloud_iot_c_sdk/sdk_src \
