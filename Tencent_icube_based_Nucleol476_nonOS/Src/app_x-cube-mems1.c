@@ -13,8 +13,8 @@
   *
   *        http://www.st.com/software_license_agreement_liberty_v2
   *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   * See the License for the specific language governing permissions and
   * limitations under the License.
@@ -22,7 +22,7 @@
   */
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -36,138 +36,138 @@
 
 int32_t MX_MEMS_Init(void)
 {
-	int ret;
+    int ret;
 
-	/*env sensor init*/
-#if (USE_IKS01A3_ENV_SENSOR_HTS221_0 == 1)		
-	ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_HTS221_0, ENV_TEMPERATURE);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_HTS221_0, ENV_TEMPERATURE);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
+    /*env sensor init*/
+#if (USE_IKS01A3_ENV_SENSOR_HTS221_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_HTS221_0, ENV_TEMPERATURE);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_HTS221_0, ENV_TEMPERATURE);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
 
-	ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_HTS221_0, ENV_HUMIDITY);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_HTS221_0, ENV_HUMIDITY);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
-#endif	
+    ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_HTS221_0, ENV_HUMIDITY);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_HTS221_0, ENV_HUMIDITY);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
+#endif
 
-#if (USE_IKS01A3_ENV_SENSOR_LPS22HH_0 == 1)		
-	ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_LPS22HH_0, ENV_PRESSURE);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_LPS22HH_0, ENV_PRESSURE);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
-#endif	
+#if (USE_IKS01A3_ENV_SENSOR_LPS22HH_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_LPS22HH_0, ENV_PRESSURE);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_LPS22HH_0, ENV_PRESSURE);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
+#endif
 
-#if (USE_IKS01A3_ENV_SENSOR_STTS751_0 == 1)		
-	ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_STTS751_0, ENV_TEMPERATURE);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_STTS751_0, ENV_TEMPERATURE);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
-#endif	
+#if (USE_IKS01A3_ENV_SENSOR_STTS751_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_Init(IKS01A3_STTS751_0, ENV_TEMPERATURE);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_ENV_SENSOR_Enable(IKS01A3_STTS751_0, ENV_TEMPERATURE);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
+#endif
 
-	/*motion sensor init*/	
-#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)		
-	ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LSM6DSO_0, MOTION_ACCELERO);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LSM6DSO_0, MOTION_ACCELERO);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
+    /*motion sensor init*/
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
+    ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LSM6DSO_0, MOTION_ACCELERO);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LSM6DSO_0, MOTION_ACCELERO);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
 
-#endif	
+#endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)		
-	ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LIS2DW12_0, MOTION_ACCELERO);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LIS2DW12_0, MOTION_ACCELERO);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
-#endif	
+#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
+    ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LIS2DW12_0, MOTION_ACCELERO);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LIS2DW12_0, MOTION_ACCELERO);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
+#endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)		
-	ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LIS2MDL_0, MOTION_MAGNETO);
-	if(BSP_ERROR_NONE == ret){
-		ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LIS2MDL_0, MOTION_MAGNETO);
-		if(BSP_ERROR_NONE != ret){
-			goto exit;
-		}
-	}else{
-		goto exit;
-	}
-#endif	
+#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
+    ret = IKS01A3_MOTION_SENSOR_Init(IKS01A3_LIS2MDL_0, MOTION_MAGNETO);
+    if (BSP_ERROR_NONE == ret) {
+        ret = IKS01A3_MOTION_SENSOR_Enable(IKS01A3_LIS2MDL_0, MOTION_MAGNETO);
+        if (BSP_ERROR_NONE != ret) {
+            goto exit;
+        }
+    } else {
+        goto exit;
+    }
+#endif
 
 
 exit:
 
-	return ret;
+    return ret;
 }
 /*
  * LM background task
  */
 void MX_MEMS_Process(void)
 {
-	int ret;
-	float temp;
-	float hum;
-	float press;
+    int ret;
+    float temp;
+    float hum;
+    float press;
 
-	/*env sensor*/
-#if (USE_IKS01A3_ENV_SENSOR_HTS221_0 == 1)	
-	ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_HTS221_0, ENV_TEMPERATURE, &temp);
-	ret |= IKS01A3_ENV_SENSOR_GetValue(IKS01A3_HTS221_0, ENV_HUMIDITY, &hum);
-	if(BSP_ERROR_NONE == ret){
-		printf("\n\rHTS221_Temp:%f HTS221_Hum:%f", temp, hum);
-	}
+    /*env sensor*/
+#if (USE_IKS01A3_ENV_SENSOR_HTS221_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_HTS221_0, ENV_TEMPERATURE, &temp);
+    ret |= IKS01A3_ENV_SENSOR_GetValue(IKS01A3_HTS221_0, ENV_HUMIDITY, &hum);
+    if (BSP_ERROR_NONE == ret) {
+        printf("\n\rHTS221_Temp:%f HTS221_Hum:%f", temp, hum);
+    }
 #endif
 
-#if (USE_IKS01A3_ENV_SENSOR_LPS22HH_0 == 1)	
-	ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_LPS22HH_0, ENV_PRESSURE, &press);
-	if(BSP_ERROR_NONE == ret){
-		printf("\n\rLPS22_press:%f", press);
-	}
+#if (USE_IKS01A3_ENV_SENSOR_LPS22HH_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_LPS22HH_0, ENV_PRESSURE, &press);
+    if (BSP_ERROR_NONE == ret) {
+        printf("\n\rLPS22_press:%f", press);
+    }
 #endif
 
-#if (USE_IKS01A3_ENV_SENSOR_STTS751_0 == 1)	
-	ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_STTS751_0, ENV_TEMPERATURE, &temp);
-	if(BSP_ERROR_NONE == ret){
-		printf("\n\rSTTS751_Temp:%f ", temp);
-	}
+#if (USE_IKS01A3_ENV_SENSOR_STTS751_0 == 1)
+    ret = IKS01A3_ENV_SENSOR_GetValue(IKS01A3_STTS751_0, ENV_TEMPERATURE, &temp);
+    if (BSP_ERROR_NONE == ret) {
+        printf("\n\rSTTS751_Temp:%f ", temp);
+    }
 #endif
 
-	/*motion sensor*/
-#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)	
-	IKS01A3_MOTION_SENSOR_Axes_t asex;
-	ret = IKS01A3_MOTION_SENSOR_GetAxes(IKS01A3_LSM6DSO_0, MOTION_ACCELERO, &asex);
-	if(BSP_ERROR_NONE == ret){
-		printf("\n\rLSM6_asex_x:%d y:%d z:%d", asex.x, asex.y, asex.z);
-	}
+    /*motion sensor*/
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
+    IKS01A3_MOTION_SENSOR_Axes_t asex;
+    ret = IKS01A3_MOTION_SENSOR_GetAxes(IKS01A3_LSM6DSO_0, MOTION_ACCELERO, &asex);
+    if (BSP_ERROR_NONE == ret) {
+        printf("\n\rLSM6_asex_x:%d y:%d z:%d", asex.x, asex.y, asex.z);
+    }
 #endif
 
 

@@ -21,7 +21,7 @@
 
 
 #define  USE_IKS01A3_BOARD		//use X-Nucleo-IKS01A3 board for sensor data or not
-#undef 	 USE_IKS01A3_BOARD	
+//#undef 	 USE_IKS01A3_BOARD	
 
 #ifdef 	USE_IKS01A3_BOARD
 #include "iks01a3_env_sensors.h"

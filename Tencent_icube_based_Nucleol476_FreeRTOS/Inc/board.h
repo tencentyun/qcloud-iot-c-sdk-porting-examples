@@ -19,7 +19,7 @@
 #include "config.h"
 #include "stm32l4xx_hal.h"
 
-
+#define  OS_USED
 #define  USE_IKS01A3_BOARD		//use X-Nucleo-IKS01A3 board for sensor data or not
 //#undef 	 USE_IKS01A3_BOARD	
 

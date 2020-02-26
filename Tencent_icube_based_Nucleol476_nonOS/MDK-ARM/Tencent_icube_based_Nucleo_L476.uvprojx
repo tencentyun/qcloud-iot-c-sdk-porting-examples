@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>STM32L476RGTx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32L4xx_DFP.1.4.0</PackID>
+          <PackID>Keil.STM32L4xx_DFP.2.1.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
           <Cpu>IRAM(0x20000000-0x20017FFF) IRAM2(0x10000000-0x10007FFF) IROM(0x8000000-0x80FFFFF)  CLOCK(8000000) FPU2 CPUTYPE("Cortex-M4")</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -330,9 +330,9 @@
             <vShortWch>1</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32L476xx</Define>
+              <Define>USE_HAL_DRIVER,STM32L476xx,MBEDTLS_CONFIG_FILE=&lt;tc_tls_config.h&gt;</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32L4xx/Include; ../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/qcloud-iot-sdk-embedded-c/include;../Middlewares/Third_Party/qcloud-iot-sdk-embedded-c/include/exports;../Middlewares/Third_Party/qcloud-iot-sdk-embedded-c/sdk_src/internal_inc;../Drivers/BSP/Components/lsm6dso/;../Drivers/BSP/Components/lis2dw12/;../Drivers/BSP/Components/lis2mdl/;../Drivers/BSP/Components/hts221/;../Drivers/BSP/Components/lps22hh/;../Drivers/BSP/Components/stts751/;../Drivers/BSP/IKS01A3/;../Drivers/BSP/Components/Common/</IncludePath>
+              <IncludePath>../Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32L4xx/Include; ../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/qcloud-iot-explorer-sdk-embedded-c/include;../Middlewares/Third_Party/qcloud-iot-explorer-sdk-embedded-c/include/exports;../Middlewares/Third_Party/qcloud-iot-explorer-sdk-embedded-c/sdk_src/internal_inc;../Drivers/BSP/Components/lsm6dso/;../Drivers/BSP/Components/lis2dw12/;../Drivers/BSP/Components/lis2mdl/;../Drivers/BSP/Components/hts221/;../Drivers/BSP/Components/lps22hh/;../Drivers/BSP/Components/stts751/;../Drivers/BSP/IKS01A3/;../Drivers/BSP/Components/Common/;../Middlewares/Third_Party/qcloud-iot-explorer-sdk-embedded-c/external_libs/mbedtls/include;../Middlewares/Third_Party/qcloud-iot-explorer-sdk-embedded-c/external_libs/mbedtls/port</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -543,232 +543,242 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/qcloud-iot-sdk-embedded-c/sdk_core</GroupName>
+          <GroupName>Middlewares/qcloud-iot-explorer-sdk-embedded-c/sdk_core</GroupName>
           <Files>
             <File>
               <FileName>mqtt_client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_common.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_common.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_connect.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_connect.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_connect.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_net.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_net.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_net.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_publish.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_publish.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_publish.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_subscribe.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_subscribe.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_subscribe.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_unsubscribe.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_unsubscribe.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_unsubscribe.c</FilePath>
             </File>
             <File>
               <FileName>mqtt_client_yield.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_yield.c</FilePath>
-            </File>
-            <File>
-              <FileName>ca.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\ca.c</FilePath>
-            </File>
-            <File>
-              <FileName>device.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\device.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\protocol\mqtt\mqtt_client_yield.c</FilePath>
             </File>
             <File>
               <FileName>json_parser.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\json_parser.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\json_parser.c</FilePath>
             </File>
             <File>
               <FileName>json_token.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\json_token.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\json_token.c</FilePath>
             </File>
             <File>
               <FileName>qcloud_iot_log.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\qcloud_iot_log.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\qcloud_iot_log.c</FilePath>
             </File>
             <File>
               <FileName>string_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\string_utils.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\string_utils.c</FilePath>
             </File>
             <File>
               <FileName>utils_aes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_aes.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_aes.c</FilePath>
             </File>
             <File>
               <FileName>utils_base64.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_base64.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_base64.c</FilePath>
             </File>
             <File>
               <FileName>utils_hmac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_hmac.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_hmac.c</FilePath>
             </File>
             <File>
               <FileName>utils_list.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_list.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_list.c</FilePath>
             </File>
             <File>
               <FileName>utils_md5.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_md5.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_md5.c</FilePath>
             </File>
             <File>
               <FileName>utils_sha1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_sha1.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_sha1.c</FilePath>
             </File>
             <File>
               <FileName>utils_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>shadow_client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\services\shadow\shadow_client.c</FilePath>
-            </File>
-            <File>
-              <FileName>shadow_client_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\services\shadow\shadow_client_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>shadow_client_json.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\services\shadow\shadow_client_json.c</FilePath>
-            </File>
-            <File>
-              <FileName>shadow_client_manager.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\services\shadow\shadow_client_manager.c</FilePath>
-            </File>
-            <File>
-              <FileName>qcloud_iot_event.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\services\event\qcloud_iot_event.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_timer.c</FilePath>
             </File>
             <File>
               <FileName>utils_ringbuff.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\utils\utils_ringbuff.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\utils_ringbuff.c</FilePath>
+            </File>
+            <File>
+              <FileName>qcloud_iot_ca.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\qcloud_iot_ca.c</FilePath>
+            </File>
+            <File>
+              <FileName>qcloud_iot_device.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\utils\qcloud_iot_device.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_aciton.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_aciton.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_client.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_client_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_client_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_client_json.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_client_json.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_client_manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_client_manager.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_template_event.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\services\data_template\data_template_event.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/qcloud-iot-sdk-embedded-c/sample</GroupName>
+          <GroupName>Middlewares/qcloud-iot-explorer-sdk-embedded-c/sample</GroupName>
           <Files>
             <File>
               <FileName>mqtt_sample.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\tc_iot_examples\iot_hub_platform\mqtt_sample.c</FilePath>
-            </File>
-            <File>
-              <FileName>shadow_sample.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\tc_iot_examples\iot_hub_platform\shadow_sample.c</FilePath>
+              <FilePath>..\Src\tc_iot_examples\mqtt\mqtt_sample.c</FilePath>
             </File>
             <File>
               <FileName>iCube_data_template_sample.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\tc_iot_examples\iot_explorer_platform\iCube_data_template_sample.c</FilePath>
+              <FilePath>..\Src\tc_iot_examples\data_template_iCube\iCube_data_template_sample.c</FilePath>
             </File>
             <File>
               <FileName>light_data_template_sample.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\tc_iot_examples\iot_explorer_platform\light_data_template_sample.c</FilePath>
+              <FilePath>..\Src\tc_iot_examples\data_template_light\light_data_template_sample.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/qcloud-iot-sdk-embedded-c/network_at</GroupName>
+          <GroupName>Middlewares/qcloud-iot-explorer-sdk-embedded-c/network_at</GroupName>
           <Files>
             <File>
               <FileName>at_client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\network\at_socket\at_client.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\at_socket\at_client.c</FilePath>
             </File>
             <File>
               <FileName>at_socket_inf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\network\at_socket\at_socket_inf.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\at_socket\at_socket_inf.c</FilePath>
             </File>
             <File>
               <FileName>at_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\network\at_socket\at_utils.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\at_socket\at_utils.c</FilePath>
             </File>
             <File>
               <FileName>network_interface.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\network\network_interface.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\network_interface.c</FilePath>
             </File>
             <File>
               <FileName>network_at_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\sdk_src\network\at_socket\network_at_tcp.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\at_socket\network_at_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>network_tls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\sdk_src\network\tls\network_tls.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/qcloud-iot-sdk-embedded-c/at_device</GroupName>
+          <GroupName>Middlewares/qcloud-iot-explorer-sdk-embedded-c/at_device</GroupName>
           <Files>
             <File>
               <FileName>at_device_esp8266.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\at_device\esp8266\at_device_esp8266.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\at_device\esp8266\at_device_esp8266.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/qcloud-iot-sdk-embedded-c/platform</GroupName>
+          <GroupName>Middlewares/qcloud-iot-explorer-sdk-embedded-c/platform</GroupName>
           <Files>
+            <File>
+              <FileName>HAL_TLS_mbedtls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\tls\mbedtls\HAL_TLS_mbedtls.c</FilePath>
+            </File>
             <File>
               <FileName>HAL_AT_UART_nonos.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_AT_UART_nonos.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\os\nonos\HAL_AT_UART_nonos.c</FilePath>
             </File>
             <File>
               <FileName>HAL_Device_nonos.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_Device_nonos.c</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_Timer_nonos.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_Timer_nonos.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\os\nonos\HAL_Device_nonos.c</FilePath>
             </File>
             <File>
               <FileName>HAL_OS_nonos.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Middlewares\Third_Party\qcloud-iot-sdk-embedded-c\platform\os\nonos\HAL_OS_nonos.c</FilePath>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\os\nonos\HAL_OS_nonos.c</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_Timer_nonos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\platform\os\nonos\HAL_Timer_nonos.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -859,6 +869,381 @@
               <FileName>iks01a3_motion_sensors_ex.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\BSP\IKS01A3\iks01a3_motion_sensors_ex.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/mbedTLS/lib</GroupName>
+          <Files>
+            <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\aes.c</FilePath>
+            </File>
+            <File>
+              <FileName>aesni.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\aesni.c</FilePath>
+            </File>
+            <File>
+              <FileName>arc4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\arc4.c</FilePath>
+            </File>
+            <File>
+              <FileName>asn1parse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\asn1parse.c</FilePath>
+            </File>
+            <File>
+              <FileName>asn1write.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\asn1write.c</FilePath>
+            </File>
+            <File>
+              <FileName>base64.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\base64.c</FilePath>
+            </File>
+            <File>
+              <FileName>bignum.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\bignum.c</FilePath>
+            </File>
+            <File>
+              <FileName>blowfish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\blowfish.c</FilePath>
+            </File>
+            <File>
+              <FileName>camellia.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\camellia.c</FilePath>
+            </File>
+            <File>
+              <FileName>ccm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ccm.c</FilePath>
+            </File>
+            <File>
+              <FileName>certs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\certs.c</FilePath>
+            </File>
+            <File>
+              <FileName>cipher.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\cipher.c</FilePath>
+            </File>
+            <File>
+              <FileName>cipher_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\cipher_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\cmac.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctr_drbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ctr_drbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\des.c</FilePath>
+            </File>
+            <File>
+              <FileName>dhm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\dhm.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecdh.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ecdh.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecdsa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ecdsa.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecjpake.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ecjpake.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ecp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecp_curves.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ecp_curves.c</FilePath>
+            </File>
+            <File>
+              <FileName>entropy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\entropy.c</FilePath>
+            </File>
+            <File>
+              <FileName>entropy_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\entropy_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\error.c</FilePath>
+            </File>
+            <File>
+              <FileName>gcm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\gcm.c</FilePath>
+            </File>
+            <File>
+              <FileName>havege.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\havege.c</FilePath>
+            </File>
+            <File>
+              <FileName>hmac_drbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\hmac_drbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>md.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\md.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\md_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>md2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\md2.c</FilePath>
+            </File>
+            <File>
+              <FileName>md4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\md4.c</FilePath>
+            </File>
+            <File>
+              <FileName>md5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\md5.c</FilePath>
+            </File>
+            <File>
+              <FileName>memory_buffer_alloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\memory_buffer_alloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>oid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\oid.c</FilePath>
+            </File>
+            <File>
+              <FileName>padlock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\padlock.c</FilePath>
+            </File>
+            <File>
+              <FileName>pem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pem.c</FilePath>
+            </File>
+            <File>
+              <FileName>pk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pk.c</FilePath>
+            </File>
+            <File>
+              <FileName>pk_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pk_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pkcs5.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pkcs11.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pkcs12.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkparse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pkparse.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkwrite.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\pkwrite.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>ripemd160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ripemd160.c</FilePath>
+            </File>
+            <File>
+              <FileName>rsa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\rsa.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\sha1.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha256.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\sha256.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha512.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\sha512.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_cache.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_ciphersuites.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_ciphersuites.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cli.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_cli.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cookie.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_cookie.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_srv.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_ticket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_ticket.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_tls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\ssl_tls.c</FilePath>
+            </File>
+            <File>
+              <FileName>threading.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\threading.c</FilePath>
+            </File>
+            <File>
+              <FileName>timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>version.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\version.c</FilePath>
+            </File>
+            <File>
+              <FileName>version_features.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\version_features.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtea.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\xtea.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_create.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509_create.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_crl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509_crl.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_crt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509_crt.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_csr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509_csr.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509write_crt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509write_crt.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509write_csr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\x509write_csr.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/mbedTLS/port</GroupName>
+          <Files>
+            <File>
+              <FileName>entropy_hardware.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\port\entropy_hardware.c</FilePath>
+            </File>
+            <File>
+              <FileName>net_sockets_alt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\port\net_sockets_alt.c</FilePath>
+            </File>
+            <File>
+              <FileName>timing_alt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\port\timing_alt.c</FilePath>
             </File>
           </Files>
         </Group>
