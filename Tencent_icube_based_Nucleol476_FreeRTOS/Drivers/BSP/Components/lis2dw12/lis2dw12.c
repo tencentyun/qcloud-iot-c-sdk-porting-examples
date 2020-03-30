@@ -6,29 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; COPYRIGHT(c) 2018 STMicroelectronics</center></h2>
+ * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+ * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *   1. Redistributions of source code must retain the above copyright notice,
- *      this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *   3. Neither the name of STMicroelectronics nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -730,7 +714,7 @@ int32_t LIS2DW12_ACC_SetFullScale(LIS2DW12_Object_t *pObj, int32_t FullScale)
  */
 int32_t LIS2DW12_ACC_GetAxesRaw(LIS2DW12_Object_t *pObj, LIS2DW12_AxesRaw_t *Value)
 {
-  axis3bit16_t data_raw;
+  lis2dw12_axis3bit16_t data_raw;
   lis2dw12_mode_t mode;
   int32_t ret = LIS2DW12_OK;
 
@@ -878,10 +862,10 @@ int32_t LIS2DW12_Set_Interrupt_Latch(LIS2DW12_Object_t *pObj, uint8_t Status)
  * @retval 0 in case of success, an error code otherwise
  */
 int32_t LIS2DW12_ACC_Enable_DRDY_Interrupt(LIS2DW12_Object_t *pObj)
-{  
+{
   lis2dw12_ctrl5_int2_pad_ctrl_t int2_pad_ctrl;
-  
-  /* Enable DRDY interrupts on INT1 */  
+
+  /* Enable DRDY interrupts on INT1 */
   if (lis2dw12_data_ready_mode_set(&(pObj->Ctx), LIS2DW12_DRDY_PULSED) != LIS2DW12_OK)
   {
     return LIS2DW12_ERROR;
@@ -894,8 +878,8 @@ int32_t LIS2DW12_ACC_Enable_DRDY_Interrupt(LIS2DW12_Object_t *pObj)
   if (lis2dw12_pin_int2_route_set(&(pObj->Ctx), &int2_pad_ctrl) != LIS2DW12_OK)
   {
     return LIS2DW12_ERROR;
-  }  
-  
+  }
+
   return LIS2DW12_OK;
 }
 
@@ -907,7 +891,7 @@ int32_t LIS2DW12_ACC_Enable_DRDY_Interrupt(LIS2DW12_Object_t *pObj)
 int32_t LIS2DW12_ACC_Disable_DRDY_Interrupt(LIS2DW12_Object_t *pObj)
 {
   lis2dw12_ctrl5_int2_pad_ctrl_t int2_pad_ctrl;
-  
+
   if (lis2dw12_pin_int2_route_get(&(pObj->Ctx), &int2_pad_ctrl) != LIS2DW12_OK)
   {
     return LIS2DW12_ERROR;
@@ -916,8 +900,8 @@ int32_t LIS2DW12_ACC_Disable_DRDY_Interrupt(LIS2DW12_Object_t *pObj)
   if (lis2dw12_pin_int2_route_set(&(pObj->Ctx), &int2_pad_ctrl) != LIS2DW12_OK)
   {
     return LIS2DW12_ERROR;
-  }  
-  
+  }
+
   return LIS2DW12_OK;
 }
 
@@ -933,8 +917,8 @@ int32_t LIS2DW12_ACC_Set_Filter_Mode(LIS2DW12_Object_t *pObj, uint8_t filterMode
   {
     return LIS2DW12_ERROR;
   }
-  
-  return LIS2DW12_OK;  
+
+  return LIS2DW12_OK;
 }
 
 /**
@@ -1659,7 +1643,7 @@ static int32_t LIS2DW12_ACC_SetOutputDataRate_When_Enabled(LIS2DW12_Object_t *pO
       {
         case LIS2DW12_LOW_NOISE_DISABLE:
         default:
-          new_power_mode = LIS2DW12_HIGH_PERFORMANCE; 
+          new_power_mode = LIS2DW12_HIGH_PERFORMANCE;
           break;
         case LIS2DW12_LOW_NOISE_ENABLE:
           new_power_mode = LIS2DW12_HIGH_PERFORMANCE_LOW_NOISE;
@@ -1677,7 +1661,7 @@ static int32_t LIS2DW12_ACC_SetOutputDataRate_When_Enabled(LIS2DW12_Object_t *pO
       {
         case LIS2DW12_LOW_NOISE_DISABLE:
         default:
-          new_power_mode = LIS2DW12_CONT_LOW_PWR_4; 
+          new_power_mode = LIS2DW12_CONT_LOW_PWR_4;
           break;
         case LIS2DW12_LOW_NOISE_ENABLE:
           new_power_mode = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_4;
@@ -1695,7 +1679,7 @@ static int32_t LIS2DW12_ACC_SetOutputDataRate_When_Enabled(LIS2DW12_Object_t *pO
       {
         case LIS2DW12_LOW_NOISE_DISABLE:
         default:
-          new_power_mode = LIS2DW12_CONT_LOW_PWR_3; 
+          new_power_mode = LIS2DW12_CONT_LOW_PWR_3;
           break;
         case LIS2DW12_LOW_NOISE_ENABLE:
           new_power_mode = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_3;
@@ -1713,7 +1697,7 @@ static int32_t LIS2DW12_ACC_SetOutputDataRate_When_Enabled(LIS2DW12_Object_t *pO
       {
         case LIS2DW12_LOW_NOISE_DISABLE:
         default:
-          new_power_mode = LIS2DW12_CONT_LOW_PWR_2; 
+          new_power_mode = LIS2DW12_CONT_LOW_PWR_2;
           break;
         case LIS2DW12_LOW_NOISE_ENABLE:
           new_power_mode = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2;
@@ -1731,7 +1715,7 @@ static int32_t LIS2DW12_ACC_SetOutputDataRate_When_Enabled(LIS2DW12_Object_t *pO
       {
         case LIS2DW12_LOW_NOISE_DISABLE:
         default:
-          new_power_mode = LIS2DW12_CONT_LOW_PWR_12bit; 
+          new_power_mode = LIS2DW12_CONT_LOW_PWR_12bit;
           break;
         case LIS2DW12_LOW_NOISE_ENABLE:
           new_power_mode = LIS2DW12_CONT_LOW_PWR_LOW_NOISE_12bit;

@@ -6,39 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics International N.V.
+ * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted, provided that the following conditions are met:
- *
- * 1. Redistribution of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- * 3. Neither the name of STMicroelectronics nor the names of other
- *    contributors to this software may be used to endorse or promote products
- *    derived from this software without specific written permission.
- * 4. This software, including modifications and/or derivative works of this
- *    software, must execute solely and exclusively on microcontroller or
- *    microprocessor devices manufactured by or for STMicroelectronics.
- * 5. Redistribution and use of this software other than as permitted under
- *    this license is void and will automatically terminate your rights under
- *    this license.
- *
- * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
- * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
- * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -130,6 +104,42 @@ static int32_t LIS2DH12_0_Probe(uint32_t Functions);
 
 #if (USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 == 1)
 static int32_t LSM6DSOX_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+static int32_t AIS2DW12_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+static int32_t LIS3MDL_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+static int32_t LSM6DSR_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+static int32_t A3G4250D_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+static int32_t AIS328DQ_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+static int32_t AIS3624DQ_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+static int32_t H3LIS331DL_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+static int32_t LSM6DSRX_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+static int32_t ISM330DHCX_0_Probe(uint32_t Functions);
 #endif
 
 /**
@@ -233,7 +243,7 @@ int32_t IKS01A3_MOTION_SENSOR_Init(uint32_t Instance, uint32_t Functions)
       }
       break;
 #endif
-      
+
 #if (USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 == 1)
     case IKS01A3_ASM330LHH_0:
       if (ASM330LHH_0_Probe(Functions) != BSP_ERROR_NONE)
@@ -258,7 +268,7 @@ int32_t IKS01A3_MOTION_SENSOR_Init(uint32_t Instance, uint32_t Functions)
       }
       break;
 #endif
-      
+
 #if (USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 == 1)
     case IKS01A3_IIS2DLPC_0:
       if (IIS2DLPC_0_Probe(Functions) != BSP_ERROR_NONE)
@@ -412,6 +422,231 @@ int32_t IKS01A3_MOTION_SENSOR_Init(uint32_t Instance, uint32_t Functions)
 #if (USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 == 1)
     case IKS01A3_LSM6DSOX_0:
       if (LSM6DSOX_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+    case IKS01A3_AIS2DW12_0:
+      if (AIS2DW12_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+    case IKS01A3_LIS3MDL_0:
+      if (LIS3MDL_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+    case IKS01A3_LSM6DSR_0:
+      if (LSM6DSR_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+    case IKS01A3_A3G4250D_0:
+      if (A3G4250D_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+    case IKS01A3_AIS328DQ_0:
+      if (AIS328DQ_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+    case IKS01A3_AIS3624DQ_0:
+      if (AIS3624DQ_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+    case IKS01A3_H3LIS331DL_0:
+      if (H3LIS331DL_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+    case IKS01A3_LSM6DSRX_0:
+      if (LSM6DSRX_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (MotionDrv[Instance]->GetCapabilities(MotionCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Acc == 1U)
+      {
+        component_functions |= MOTION_ACCELERO;
+      }
+      if (cap.Gyro == 1U)
+      {
+        component_functions |= MOTION_GYRO;
+      }
+      if (cap.Magneto == 1U)
+      {
+        component_functions |= MOTION_MAGNETO;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+    case IKS01A3_ISM330DHCX_0:
+      if (ISM330DHCX_0_Probe(Functions) != BSP_ERROR_NONE)
       {
         return BSP_ERROR_NO_INIT;
       }
@@ -1726,6 +1961,690 @@ static int32_t LSM6DSOX_0_Probe(uint32_t Functions)
             void *)&LSM6DSOX_ACC_Driver;
 
       if (MotionDrv[IKS01A3_LSM6DSOX_0]->Init(MotionCompObj[IKS01A3_LSM6DSOX_0]) != LSM6DSOX_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t AIS2DW12_0_Probe(uint32_t Functions)
+{
+  AIS2DW12_IO_t            io_ctx;
+  uint8_t                  id;
+  static AIS2DW12_Object_t ais2dw12_obj_0;
+  AIS2DW12_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = AIS2DW12_I2C_BUS; /* I2C */
+  io_ctx.Address     = AIS2DW12_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (AIS2DW12_RegisterBusIO(&ais2dw12_obj_0, &io_ctx) != AIS2DW12_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (AIS2DW12_ReadID(&ais2dw12_obj_0, &id) != AIS2DW12_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != AIS2DW12_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)AIS2DW12_GetCapabilities(&ais2dw12_obj_0, &cap);
+    MotionCtx[IKS01A3_AIS2DW12_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_AIS2DW12_0] = &ais2dw12_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_AIS2DW12_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&AIS2DW12_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_AIS2DW12_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+            void *)&AIS2DW12_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_AIS2DW12_0]->Init(MotionCompObj[IKS01A3_AIS2DW12_0]) != AIS2DW12_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t LIS3MDL_0_Probe(uint32_t Functions)
+{
+  LIS3MDL_IO_t            io_ctx;
+  uint8_t                 id;
+  static LIS3MDL_Object_t lis3mdl_obj_0;
+  LIS3MDL_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = LIS3MDL_I2C_BUS; /* I2C */
+  io_ctx.Address     = LIS3MDL_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (LIS3MDL_RegisterBusIO(&lis3mdl_obj_0, &io_ctx) != LIS3MDL_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (LIS3MDL_ReadID(&lis3mdl_obj_0, &id) != LIS3MDL_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != LIS3MDL_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)LIS3MDL_GetCapabilities(&lis3mdl_obj_0, &cap);
+    MotionCtx[IKS01A3_LIS3MDL_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_LIS3MDL_0] = &lis3mdl_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_LIS3MDL_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&LIS3MDL_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_LIS3MDL_0][FunctionIndex[MOTION_MAGNETO]] = (MOTION_SENSOR_FuncDrv_t *)(
+            void *)&LIS3MDL_MAG_Driver;
+
+      if (MotionDrv[IKS01A3_LIS3MDL_0]->Init(MotionCompObj[IKS01A3_LIS3MDL_0]) != LIS3MDL_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t LSM6DSR_0_Probe(uint32_t Functions)
+{
+  LSM6DSR_IO_t            io_ctx;
+  uint8_t                 id;
+  static LSM6DSR_Object_t lsm6dsr_obj_0;
+  LSM6DSR_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = LSM6DSR_I2C_BUS; /* I2C */
+  io_ctx.Address     = LSM6DSR_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (LSM6DSR_RegisterBusIO(&lsm6dsr_obj_0, &io_ctx) != LSM6DSR_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (LSM6DSR_ReadID(&lsm6dsr_obj_0, &id) != LSM6DSR_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != LSM6DSR_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)LSM6DSR_GetCapabilities(&lsm6dsr_obj_0, &cap);
+    MotionCtx[IKS01A3_LSM6DSR_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_LSM6DSR_0] = &lsm6dsr_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_LSM6DSR_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&LSM6DSR_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_LSM6DSR_0][FunctionIndex[MOTION_GYRO]] = (MOTION_SENSOR_FuncDrv_t *)(void *)&LSM6DSR_GYRO_Driver;
+
+      if (MotionDrv[IKS01A3_LSM6DSR_0]->Init(MotionCompObj[IKS01A3_LSM6DSR_0]) != LSM6DSR_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_LSM6DSR_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+            void *)&LSM6DSR_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_LSM6DSR_0]->Init(MotionCompObj[IKS01A3_LSM6DSR_0]) != LSM6DSR_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t A3G4250D_0_Probe(uint32_t Functions)
+{
+  A3G4250D_IO_t             io_ctx;
+  uint8_t                   id;
+  static A3G4250D_Object_t  a3g4250d_obj_0;
+  A3G4250D_Capabilities_t   cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = A3G4250D_I2C_BUS; /* I2C */
+  io_ctx.Address     = A3G4250D_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (A3G4250D_RegisterBusIO(&a3g4250d_obj_0, &io_ctx) != A3G4250D_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (A3G4250D_ReadID(&a3g4250d_obj_0, &id) != A3G4250D_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != A3G4250D_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)A3G4250D_GetCapabilities(&a3g4250d_obj_0, &cap);
+    MotionCtx[IKS01A3_A3G4250D_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_A3G4250D_0] = &a3g4250d_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_A3G4250D_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&A3G4250D_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_A3G4250D_0][FunctionIndex[MOTION_GYRO]] = (MOTION_SENSOR_FuncDrv_t *)(
+          void *)&A3G4250D_GYRO_Driver;
+
+      if (MotionDrv[IKS01A3_A3G4250D_0]->Init(MotionCompObj[IKS01A3_A3G4250D_0]) != A3G4250D_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t AIS328DQ_0_Probe(uint32_t Functions)
+{
+  AIS328DQ_IO_t            io_ctx;
+  uint8_t                  id;
+  static AIS328DQ_Object_t ais328dq_obj_0;
+  AIS328DQ_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = AIS328DQ_I2C_BUS; /* I2C */
+  io_ctx.Address     = AIS328DQ_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (AIS328DQ_RegisterBusIO(&ais328dq_obj_0, &io_ctx) != AIS328DQ_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (AIS328DQ_ReadID(&ais328dq_obj_0, &id) != AIS328DQ_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != AIS328DQ_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)AIS328DQ_GetCapabilities(&ais328dq_obj_0, &cap);
+    MotionCtx[IKS01A3_AIS328DQ_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_AIS328DQ_0] = &ais328dq_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_AIS328DQ_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&AIS328DQ_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_AIS328DQ_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+          void *)&AIS328DQ_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_AIS328DQ_0]->Init(MotionCompObj[IKS01A3_AIS328DQ_0]) != AIS328DQ_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t AIS3624DQ_0_Probe(uint32_t Functions)
+{
+  AIS3624DQ_IO_t            io_ctx;
+  uint8_t                   id;
+  static AIS3624DQ_Object_t ais3624dq_obj_0;
+  AIS3624DQ_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = AIS3624DQ_I2C_BUS; /* I2C */
+  io_ctx.Address     = AIS3624DQ_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (AIS3624DQ_RegisterBusIO(&ais3624dq_obj_0, &io_ctx) != AIS3624DQ_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (AIS3624DQ_ReadID(&ais3624dq_obj_0, &id) != AIS3624DQ_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != AIS3624DQ_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)AIS3624DQ_GetCapabilities(&ais3624dq_obj_0, &cap);
+    MotionCtx[IKS01A3_AIS3624DQ_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_AIS3624DQ_0] = &ais3624dq_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_AIS3624DQ_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&AIS3624DQ_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_AIS3624DQ_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+          void *)&AIS3624DQ_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_AIS3624DQ_0]->Init(MotionCompObj[IKS01A3_AIS3624DQ_0]) != AIS3624DQ_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t H3LIS331DL_0_Probe(uint32_t Functions)
+{
+  H3LIS331DL_IO_t            io_ctx;
+  uint8_t                    id;
+  static H3LIS331DL_Object_t h3lis331dl_obj_0;
+  H3LIS331DL_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = H3LIS331DL_I2C_BUS; /* I2C */
+  io_ctx.Address     = H3LIS331DL_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (H3LIS331DL_RegisterBusIO(&h3lis331dl_obj_0, &io_ctx) != H3LIS331DL_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (H3LIS331DL_ReadID(&h3lis331dl_obj_0, &id) != H3LIS331DL_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != H3LIS331DL_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)H3LIS331DL_GetCapabilities(&h3lis331dl_obj_0, &cap);
+    MotionCtx[IKS01A3_H3LIS331DL_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_H3LIS331DL_0] = &h3lis331dl_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_H3LIS331DL_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&H3LIS331DL_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_H3LIS331DL_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+          void *)&H3LIS331DL_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_H3LIS331DL_0]->Init(MotionCompObj[IKS01A3_H3LIS331DL_0]) != H3LIS331DL_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t LSM6DSRX_0_Probe(uint32_t Functions)
+{
+  LSM6DSRX_IO_t            io_ctx;
+  uint8_t                 id;
+  static LSM6DSRX_Object_t lsm6dsrx_obj_0;
+  LSM6DSRX_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = LSM6DSRX_I2C_BUS; /* I2C */
+  io_ctx.Address     = LSM6DSRX_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (LSM6DSRX_RegisterBusIO(&lsm6dsrx_obj_0, &io_ctx) != LSM6DSRX_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (LSM6DSRX_ReadID(&lsm6dsrx_obj_0, &id) != LSM6DSRX_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != LSM6DSRX_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)LSM6DSRX_GetCapabilities(&lsm6dsrx_obj_0, &cap);
+    MotionCtx[IKS01A3_LSM6DSRX_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_LSM6DSRX_0] = &lsm6dsrx_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_LSM6DSRX_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&LSM6DSRX_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_LSM6DSRX_0][FunctionIndex[MOTION_GYRO]] = (MOTION_SENSOR_FuncDrv_t *)(void *)&LSM6DSRX_GYRO_Driver;
+
+      if (MotionDrv[IKS01A3_LSM6DSRX_0]->Init(MotionCompObj[IKS01A3_LSM6DSRX_0]) != LSM6DSRX_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_LSM6DSRX_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+            void *)&LSM6DSRX_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_LSM6DSRX_0]->Init(MotionCompObj[IKS01A3_LSM6DSRX_0]) != LSM6DSRX_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_MAGNETO) == MOTION_MAGNETO))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0  == 1)
+/**
+ * @brief  Register Bus IOs for instance 0 if component ID is OK
+ * @retval BSP status
+ */
+static int32_t ISM330DHCX_0_Probe(uint32_t Functions)
+{
+  ISM330DHCX_IO_t            io_ctx;
+  uint8_t                 id;
+  static ISM330DHCX_Object_t ism330dhcx_obj_0;
+  ISM330DHCX_Capabilities_t  cap;
+  int32_t ret = BSP_ERROR_NONE;
+
+  /* Configure the accelero driver */
+  io_ctx.BusType     = ISM330DHCX_I2C_BUS; /* I2C */
+  io_ctx.Address     = ISM330DHCX_I2C_ADD_L;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (ISM330DHCX_RegisterBusIO(&ism330dhcx_obj_0, &io_ctx) != ISM330DHCX_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (ISM330DHCX_ReadID(&ism330dhcx_obj_0, &id) != ISM330DHCX_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != ISM330DHCX_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)ISM330DHCX_GetCapabilities(&ism330dhcx_obj_0, &cap);
+    MotionCtx[IKS01A3_ISM330DHCX_0].Functions = ((uint32_t)cap.Gyro) | ((uint32_t)cap.Acc << 1) | ((uint32_t)cap.Magneto << 2);
+
+    MotionCompObj[IKS01A3_ISM330DHCX_0] = &ism330dhcx_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    MotionDrv[IKS01A3_ISM330DHCX_0] = (MOTION_SENSOR_CommonDrv_t *)(void *)&ISM330DHCX_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_GYRO) == MOTION_GYRO) && (cap.Gyro == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_ISM330DHCX_0][FunctionIndex[MOTION_GYRO]] = (MOTION_SENSOR_FuncDrv_t *)(void *)&ISM330DHCX_GYRO_Driver;
+
+      if (MotionDrv[IKS01A3_ISM330DHCX_0]->Init(MotionCompObj[IKS01A3_ISM330DHCX_0]) != ISM330DHCX_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & MOTION_ACCELERO) == MOTION_ACCELERO) && (cap.Acc == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      MotionFuncDrv[IKS01A3_ISM330DHCX_0][FunctionIndex[MOTION_ACCELERO]] = (MOTION_SENSOR_FuncDrv_t *)(
+            void *)&ISM330DHCX_ACC_Driver;
+
+      if (MotionDrv[IKS01A3_ISM330DHCX_0]->Init(MotionCompObj[IKS01A3_ISM330DHCX_0]) != ISM330DHCX_OK)
       {
         ret = BSP_ERROR_COMPONENT_FAILURE;
       }

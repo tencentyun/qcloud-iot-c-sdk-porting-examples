@@ -6,29 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; COPYRIGHT(c) 2018 STMicroelectronics</center></h2>
+ * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+ * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *   1. Redistributions of source code must retain the above copyright notice,
- *      this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *   3. Neither the name of STMicroelectronics nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -568,7 +552,7 @@ int32_t LSM6DSO_ACC_SetFullScale(LSM6DSO_Object_t *pObj, int32_t FullScale)
  */
 int32_t LSM6DSO_ACC_GetAxesRaw(LSM6DSO_Object_t *pObj, LSM6DSO_AxesRaw_t *Value)
 {
-  axis3bit16_t data_raw;
+  lsm6dso_axis3bit16_t data_raw;
 
   /* Read raw data values. */
   if (lsm6dso_acceleration_raw_get(&(pObj->Ctx), data_raw.u8bit) != LSM6DSO_OK)
@@ -592,7 +576,7 @@ int32_t LSM6DSO_ACC_GetAxesRaw(LSM6DSO_Object_t *pObj, LSM6DSO_AxesRaw_t *Value)
  */
 int32_t LSM6DSO_ACC_GetAxes(LSM6DSO_Object_t *pObj, LSM6DSO_Axes_t *Acceleration)
 {
-  axis3bit16_t data_raw;
+  lsm6dso_axis3bit16_t data_raw;
   float sensitivity = 0.0f;
 
   /* Read raw data values. */
@@ -886,7 +870,7 @@ int32_t LSM6DSO_GYRO_SetFullScale(LSM6DSO_Object_t *pObj, int32_t FullScale)
  */
 int32_t LSM6DSO_GYRO_GetAxesRaw(LSM6DSO_Object_t *pObj, LSM6DSO_AxesRaw_t *Value)
 {
-  axis3bit16_t data_raw;
+  lsm6dso_axis3bit16_t data_raw;
 
   /* Read raw data values. */
   if (lsm6dso_angular_rate_raw_get(&(pObj->Ctx), data_raw.u8bit) != LSM6DSO_OK)
@@ -910,7 +894,7 @@ int32_t LSM6DSO_GYRO_GetAxesRaw(LSM6DSO_Object_t *pObj, LSM6DSO_AxesRaw_t *Value
  */
 int32_t LSM6DSO_GYRO_GetAxes(LSM6DSO_Object_t *pObj, LSM6DSO_Axes_t *AngularRate)
 {
-  axis3bit16_t data_raw;
+  lsm6dso_axis3bit16_t data_raw;
   float sensitivity;
 
   /* Read raw data values. */
@@ -1001,7 +985,7 @@ int32_t LSM6DSO_ACC_Enable_Free_Fall_Detection(LSM6DSO_Object_t *pObj, LSM6DSO_S
   lsm6dso_pin_int2_route_t val2;
 
   /* Output Data Rate selection */
-  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 416.0f) != LSM6DSO_OK)
+  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 417.0f) != LSM6DSO_OK)
   {
     return LSM6DSO_ERROR;
   }
@@ -1388,7 +1372,7 @@ int32_t LSM6DSO_ACC_Enable_Wake_Up_Detection(LSM6DSO_Object_t *pObj, LSM6DSO_Sen
   lsm6dso_pin_int2_route_t val2;
 
   /* Output Data Rate selection */
-  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 416.0f) != LSM6DSO_OK)
+  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 417.0f) != LSM6DSO_OK)
   {
     return LSM6DSO_ERROR;
   }
@@ -1547,7 +1531,7 @@ int32_t LSM6DSO_ACC_Enable_Single_Tap_Detection(LSM6DSO_Object_t *pObj, LSM6DSO_
   lsm6dso_pin_int2_route_t val2;
 
   /* Output Data Rate selection */
-  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 416.0f) != LSM6DSO_OK)
+  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 417.0f) != LSM6DSO_OK)
   {
     return LSM6DSO_ERROR;
   }
@@ -1724,7 +1708,7 @@ int32_t LSM6DSO_ACC_Enable_Double_Tap_Detection(LSM6DSO_Object_t *pObj, LSM6DSO_
   lsm6dso_pin_int2_route_t val2;
 
   /* Output Data Rate selection */
-  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 416.0f) != LSM6DSO_OK)
+  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 417.0f) != LSM6DSO_OK)
   {
     return LSM6DSO_ERROR;
   }
@@ -1989,7 +1973,7 @@ int32_t LSM6DSO_ACC_Enable_6D_Orientation(LSM6DSO_Object_t *pObj, LSM6DSO_Sensor
   lsm6dso_pin_int2_route_t val2;
 
   /* Output Data Rate selection */
-  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 416.0f) != LSM6DSO_OK)
+  if (LSM6DSO_ACC_SetOutputDataRate(pObj, 417.0f) != LSM6DSO_OK)
   {
     return LSM6DSO_ERROR;
   }

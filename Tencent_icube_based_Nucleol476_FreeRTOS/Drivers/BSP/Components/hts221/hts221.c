@@ -6,29 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; COPYRIGHT(c) 2018 STMicroelectronics</center></h2>
+ * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+ * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *   1. Redistributions of source code must retain the above copyright notice,
- *      this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *   3. Neither the name of STMicroelectronics nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -329,8 +313,8 @@ int32_t HTS221_HUM_SetOutputDataRate(HTS221_Object_t *pObj, float Odr)
  */
 int32_t HTS221_HUM_GetHumidity(HTS221_Object_t *pObj, float *Value)
 {
-  axis1bit16_t data_raw_humidity;
-  axis1bit16_t coeff;
+  hts221_axis1bit16_t data_raw_humidity;
+  hts221_axis1bit16_t coeff;
   lin_t lin_hum;
 
   if (hts221_hum_adc_point_0_get(&(pObj->Ctx), coeff.u8bit) != HTS221_OK)
@@ -486,8 +470,8 @@ int32_t HTS221_TEMP_SetOutputDataRate(HTS221_Object_t *pObj, float Odr)
  */
 int32_t HTS221_TEMP_GetTemperature(HTS221_Object_t *pObj, float *Value)
 {
-  axis1bit16_t data_raw_temperature;
-  axis1bit16_t coeff;
+  hts221_axis1bit16_t data_raw_temperature;
+  hts221_axis1bit16_t coeff;
   lin_t lin_temp;
 
   if (hts221_temp_adc_point_0_get(&(pObj->Ctx), coeff.u8bit) != HTS221_OK)
@@ -558,13 +542,13 @@ int32_t HTS221_Set_One_Shot(HTS221_Object_t *pObj)
   {
     return HTS221_ERROR;
   }
-  
+
   /* Start One Shot Measurement */
   if(hts221_one_shoot_trigger_set(&(pObj->Ctx), 1) != HTS221_OK)
   {
     return HTS221_ERROR;
   }
-  
+
   return HTS221_OK;
 }
 
@@ -747,8 +731,8 @@ int32_t HTS221_Enable_DRDY_Interrupt(HTS221_Object_t *pObj)
   if (hts221_drdy_on_int_set(&(pObj->Ctx), PROPERTY_ENABLE) != HTS221_OK)
   {
     return HTS221_ERROR;
-  }  
-  
+  }
+
   return HTS221_OK;
 }
 

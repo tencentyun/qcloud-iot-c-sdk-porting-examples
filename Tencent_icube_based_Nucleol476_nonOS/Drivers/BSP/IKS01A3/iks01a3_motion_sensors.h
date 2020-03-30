@@ -6,39 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics International N.V.
+ * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted, provided that the following conditions are met:
- *
- * 1. Redistribution of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- * 3. Neither the name of STMicroelectronics nor the names of other
- *    contributors to this software may be used to endorse or promote products
- *    derived from this software without specific written permission.
- * 4. This software, including modifications and/or derivative works of this
- *    software, must execute solely and exclusively on microcontroller or
- *    microprocessor devices manufactured by or for STMicroelectronics.
- * 5. Redistribution and use of this software other than as permitted under
- *    this license is void and will automatically terminate your rights under
- *    this license.
- *
- * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
- * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
- * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -99,6 +73,42 @@ extern "C" {
 #define USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0         0
 #endif
 
+#ifndef USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0
+#define USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0         0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0
+#define USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0          0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0
+#define USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0          0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_A3G4250D_0
+#define USE_IKS01A3_MOTION_SENSOR_A3G4250D_0         0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0
+#define USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0         0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0
+#define USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0        0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0
+#define USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0       0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0
+#define USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0         0
+#endif
+
+#ifndef USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0
+#define USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0       0
+#endif
+
 #if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
 #include "lsm6dso.h"
 #endif
@@ -137,6 +147,42 @@ extern "C" {
 
 #if (USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 == 1)
 #include "lsm6dsox.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+#include "ais2dw12.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+#include "lis3mdl.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+#include "lsm6dsr.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+#include "a3g4250d.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+#include "ais328dq.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+#include "ais3624dq.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+#include "h3lis331dl.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+#include "lsm6dsrx.h"
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+#include "ism330dhcx.h"
 #endif
 
 /** @addtogroup BSP BSP
@@ -286,6 +332,168 @@ typedef struct
                             USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0)
 #endif
 
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+#define IKS01A3_AIS2DW12_0 (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+#define IKS01A3_LIS3MDL_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+#define IKS01A3_LSM6DSR_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                            USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+#define IKS01A3_A3G4250D_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+#define IKS01A3_AIS328DQ_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_A3G4250D_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+#define IKS01A3_AIS3624DQ_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 + \
+                              USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+#define IKS01A3_H3LIS331DL_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+#define IKS01A3_LSM6DSRX_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 + \
+                             USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0)
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+#define IKS01A3_ISM330DHCX_0  (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ASM330LHH_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_IIS2DLPC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_IIS2MDC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM303DAC_ACC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 + \
+                               USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0)
+#endif
+
 #ifndef MOTION_GYRO
 #define MOTION_GYRO             1U
 #endif
@@ -307,7 +515,16 @@ typedef struct
                                          USE_IKS01A3_MOTION_SENSOR_ISM303DAC_MAG_0 + \
                                          USE_IKS01A3_MOTION_SENSOR_ISM330DLC_0 + \
                                          USE_IKS01A3_MOTION_SENSOR_LIS2DH12_0 + \
-                                         USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0)
+                                         USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 + \
+                                         USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0)
 
 #if (IKS01A3_MOTION_INSTANCES_NBR == 0)
 #error "No motion sensor instance has been selected"

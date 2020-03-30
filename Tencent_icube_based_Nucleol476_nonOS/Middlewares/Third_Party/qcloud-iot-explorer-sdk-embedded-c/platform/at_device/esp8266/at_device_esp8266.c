@@ -29,6 +29,7 @@
 char g_WIFI_SSID[20] = "Your_SSID";
 char g_WIFI_PASSWORD[20] = "Your_SSID_PW";
 
+
 #define  WIFI_CONN_FLAG             (1<<0)
 #define  SEND_OK_FLAG               (1<<1)
 #define  SEND_FAIL_FLAG             (1<<2)

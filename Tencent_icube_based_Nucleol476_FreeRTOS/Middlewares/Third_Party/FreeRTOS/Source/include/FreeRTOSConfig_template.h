@@ -1,6 +1,6 @@
 /*
- * FreeRTOS Kernel V10.0.1
- * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel V10.2.1
+ * Copyright (C) 2019 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -56,9 +56,10 @@
 #define configUSE_PREEMPTION              1
 #define configUSE_IDLE_HOOK               0
 #define configUSE_TICK_HOOK               0
+#define configMAX_PRIORITIES              (7)
+#define configSUPPORT_STATIC_ALLOCATION   0
 #define configCPU_CLOCK_HZ                (SystemCoreClock)
 #define configTICK_RATE_HZ                ((TickType_t)1000)
-#define configMAX_PRIORITIES              (7)
 #define configMINIMAL_STACK_SIZE          ((uint16_t)128)
 #define configTOTAL_HEAP_SIZE             ((size_t)(15 * 1024))
 #define configMAX_TASK_NAME_LEN           (16)
@@ -95,11 +96,28 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelay             1
 #define INCLUDE_xTaskGetSchedulerState 1
 
+/*------------- CMSIS-RTOS V2 specific defines -----------*/
 /* When using CMSIS-RTOSv2 set configSUPPORT_STATIC_ALLOCATION to 1
  * is mandatory to avoid compile errors.
- */
-/*#define configSUPPORT_STATIC_ALLOCATION 1 */
-#define configSUPPORT_STATIC_ALLOCATION 0
+ * CMSIS-RTOS V2 implmentation requires the following defines
+ *
+#define configSUPPORT_STATIC_ALLOCATION          1   <-- cmsis_os threads are created using xTaskCreateStatic() API
+#define configMAX_PRIORITIES                    (56) <-- Priority range in CMSIS-RTOS V2 is [0 .. 56]
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0    <-- when set to 1, configMAX_PRIORITIES can't be more than 32 which is not suitable for the new CMSIS-RTOS v2 priority range
+*/
+
+/* the CMSIS-RTOS V2 FreeRTOS wrapper is dependent on the heap implementation used
+ * by the application thus the correct define need to be enabled from the list
+ * below
+ *
+//define USE_FreeRTOS_HEAP_1
+//define USE_FreeRTOS_HEAP_2
+//define USE_FreeRTOS_HEAP_3
+//define USE_FreeRTOS_HEAP_4
+//define USE_FreeRTOS_HEAP_5
+
+*/
+
 
 /* Cortex-M specific definitions. */
 #ifdef __NVIC_PRIO_BITS

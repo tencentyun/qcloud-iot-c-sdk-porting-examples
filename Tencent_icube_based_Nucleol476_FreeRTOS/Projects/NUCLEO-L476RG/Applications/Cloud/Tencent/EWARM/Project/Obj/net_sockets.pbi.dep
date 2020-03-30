@@ -1,0 +1,16 @@
+net_sockets.pbi: \
+  C:\Workspace\STM32CubeExpansion_Cloud_Tencent_V1.1.0\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\library\net_sockets.c \
+  C:\Workspace\STM32CubeExpansion_Cloud_Tencent_V1.1.0\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\port\tc_tls_config.h \
+  C:\Workspace\STM32CubeExpansion_Cloud_Tencent_V1.1.0\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\include\mbedtls/check_config.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\limits.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ycheck.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\yvals.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product.h \
+  C:\Workspace\STM32CubeExpansion_Cloud_Tencent_V1.1.0\Middlewares\Third_Party\qcloud-iot-explorer-sdk-embedded-c\external_libs\mbedtls\include\mbedtls/platform.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdio.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ysizet.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdlib.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product_stdlib.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\time.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c/time32.h

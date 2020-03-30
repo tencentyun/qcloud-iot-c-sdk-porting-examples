@@ -15,7 +15,7 @@
 /* #undef DEBUG_DEV_INFO_USED */
 #define AT_TCP_ENABLED
 #define AT_UART_RECV_IRQ
-//#define AT_OS_USED
+/*#define AT_OS_USED */
 /* #undef AT_OS_USED */
 /* #undef AT_DEBUG */
 /* #undef OTA_USE_HTTPS */

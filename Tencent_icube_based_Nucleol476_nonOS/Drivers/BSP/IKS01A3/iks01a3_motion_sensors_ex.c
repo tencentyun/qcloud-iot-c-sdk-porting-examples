@@ -6,39 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics International N.V.
+ * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted, provided that the following conditions are met:
- *
- * 1. Redistribution of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- * 3. Neither the name of STMicroelectronics nor the names of other
- *    contributors to this software may be used to endorse or promote products
- *    derived from this software without specific written permission.
- * 4. This software, including modifications and/or derivative works of this
- *    software, must execute solely and exclusively on microcontroller or
- *    microprocessor devices manufactured by or for STMicroelectronics.
- * 5. Redistribution and use of this software other than as permitted under
- *    this license is void and will automatically terminate your rights under
- *    this license.
- *
- * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
- * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
- * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -352,6 +326,219 @@ int32_t IKS01A3_MOTION_SENSOR_Get_DRDY_Status(uint32_t Instance, uint32_t Functi
       break;
 #endif
 
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+    case IKS01A3_AIS2DW12_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (AIS2DW12_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+    case IKS01A3_LIS3MDL_0:
+      if ((Function & MOTION_MAGNETO) == MOTION_MAGNETO)
+      {
+        if (LIS3MDL_MAG_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+    case IKS01A3_LSM6DSR_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (LSM6DSR_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else if ((Function & MOTION_GYRO) == MOTION_GYRO)
+      {
+        if (LSM6DSR_GYRO_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+    case IKS01A3_A3G4250D_0:
+      if ((Function & MOTION_GYRO) == MOTION_GYRO)
+      {
+        if (A3G4250D_GYRO_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+    case IKS01A3_AIS328DQ_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (AIS328DQ_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+    case IKS01A3_AIS3624DQ_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (AIS3624DQ_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+    case IKS01A3_H3LIS331DL_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (H3LIS331DL_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+    case IKS01A3_LSM6DSRX_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (LSM6DSRX_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else if ((Function & MOTION_GYRO) == MOTION_GYRO)
+      {
+        if (LSM6DSRX_GYRO_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+    case IKS01A3_ISM330DHCX_0:
+      if ((Function & MOTION_ACCELERO) == MOTION_ACCELERO)
+      {
+        if (ISM330DHCX_ACC_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else if ((Function & MOTION_GYRO) == MOTION_GYRO)
+      {
+        if (ISM330DHCX_GYRO_Get_DRDY_Status(MotionCompObj[Instance], Status) != BSP_ERROR_NONE)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+        }
+        else
+        {
+          ret = BSP_ERROR_NONE;
+        }
+      }
+      else
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      break;
+#endif
+
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -506,6 +693,123 @@ int32_t IKS01A3_MOTION_SENSOR_Read_Register(uint32_t Instance, uint8_t Reg, uint
 #if (USE_IKS01A3_MOTION_SENSOR_LSM6DSOX_0 == 1)
     case IKS01A3_LSM6DSOX_0:
       if (LSM6DSOX_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+    case IKS01A3_AIS2DW12_0:
+      if (AIS2DW12_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+    case IKS01A3_LIS3MDL_0:
+      if (LIS3MDL_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+    case IKS01A3_LSM6DSR_0:
+      if (LSM6DSR_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+    case IKS01A3_A3G4250D_0:
+      if (A3G4250D_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+    case IKS01A3_AIS328DQ_0:
+      if (AIS328DQ_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+    case IKS01A3_AIS3624DQ_0:
+      if (AIS3624DQ_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+    case IKS01A3_H3LIS331DL_0:
+      if (H3LIS331DL_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+    case IKS01A3_LSM6DSRX_0:
+      if (LSM6DSRX_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+    case IKS01A3_ISM330DHCX_0:
+      if (ISM330DHCX_Read_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
       {
         ret = BSP_ERROR_COMPONENT_FAILURE;
       }
@@ -680,6 +984,123 @@ int32_t IKS01A3_MOTION_SENSOR_Write_Register(uint32_t Instance, uint8_t Reg, uin
       break;
 #endif
 
+#if (USE_IKS01A3_MOTION_SENSOR_AIS2DW12_0 == 1)
+    case IKS01A3_AIS2DW12_0:
+      if (AIS2DW12_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LIS3MDL_0 == 1)
+    case IKS01A3_LIS3MDL_0:
+      if (LIS3MDL_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSR_0 == 1)
+    case IKS01A3_LSM6DSR_0:
+      if (LSM6DSR_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_A3G4250D_0 == 1)
+    case IKS01A3_A3G4250D_0:
+      if (A3G4250D_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS328DQ_0 == 1)
+    case IKS01A3_AIS328DQ_0:
+      if (AIS328DQ_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_AIS3624DQ_0 == 1)
+    case IKS01A3_AIS3624DQ_0:
+      if (AIS3624DQ_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_H3LIS331DL_0 == 1)
+    case IKS01A3_H3LIS331DL_0:
+      if (H3LIS331DL_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSRX_0 == 1)
+    case IKS01A3_LSM6DSRX_0:
+      if (LSM6DSRX_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_MOTION_SENSOR_ISM330DHCX_0 == 1)
+    case IKS01A3_ISM330DHCX_0:
+      if (ISM330DHCX_Write_Reg(MotionCompObj[Instance], Reg, Data) != BSP_ERROR_NONE)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+      break;
+#endif
+
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -728,12 +1149,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_Event_Status(uint32_t Instance, IKS01A3_MOTION
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -768,18 +1183,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Free_Fall_Detection(uint32_t Instance, IKS0
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -809,18 +1212,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Free_Fall_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -857,18 +1248,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Free_Fall_Threshold(uint32_t Instance, uint8_t
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -899,18 +1278,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Free_Fall_Duration(uint32_t Instance, uint8_t 
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -947,18 +1314,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Pedometer(uint32_t Instance)
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -988,18 +1343,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Pedometer(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1036,18 +1379,6 @@ int32_t IKS01A3_MOTION_SENSOR_Reset_Step_Counter(uint32_t Instance)
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1078,18 +1409,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_Step_Count(uint32_t Instance, uint16_t *StepCo
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1127,18 +1446,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Tilt_Detection(uint32_t Instance, IKS01A3_M
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1168,18 +1475,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Tilt_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1231,12 +1526,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Wake_Up_Detection(uint32_t Instance, IKS01A
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1279,12 +1568,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Wake_Up_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1334,12 +1617,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Wake_Up_Threshold(uint32_t Instance, uint8_t T
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1386,12 +1663,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Wake_Up_Duration(uint32_t Instance, uint8_t Du
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1412,12 +1683,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Inactivity_Detection(uint32_t Instance, IKS
 
   switch (Instance)
   {
-#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
-    case IKS01A3_LSM6DSO_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
 #if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
     case IKS01A3_LIS2DW12_0:
       /* For LIS2DW12 the Inactivity event can be routed only on INT2 pin */
@@ -1429,12 +1694,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Inactivity_Detection(uint32_t Instance, IKS
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1457,12 +1716,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Inactivity_Detection(uint32_t Instance)
 
   switch (Instance)
   {
-#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
-    case IKS01A3_LSM6DSO_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
 #if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
     case IKS01A3_LIS2DW12_0:
       if (LIS2DW12_ACC_Disable_Inactivity_Detection(MotionCompObj[Instance]) != BSP_ERROR_NONE)
@@ -1473,12 +1726,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Inactivity_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1502,12 +1749,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Sleep_Duration(uint32_t Instance, uint8_t Dura
 
   switch (Instance)
   {
-#if (USE_IKS01A3_MOTION_SENSOR_LSM6DSO_0 == 1)
-    case IKS01A3_LSM6DSO_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
 #if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
     case IKS01A3_LIS2DW12_0:
       if (LIS2DW12_ACC_Set_Sleep_Duration(MotionCompObj[Instance], Duration) != BSP_ERROR_NONE)
@@ -1518,12 +1759,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Sleep_Duration(uint32_t Instance, uint8_t Dura
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1561,18 +1796,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Single_Tap_Detection(uint32_t Instance, IKS
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1602,18 +1825,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Single_Tap_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1651,18 +1862,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_Double_Tap_Detection(uint32_t Instance, IKS
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1692,18 +1891,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_Double_Tap_Detection(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1740,18 +1927,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Tap_Threshold(uint32_t Instance, uint8_t Thres
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1782,18 +1957,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Tap_Shock_Time(uint32_t Instance, uint8_t Time
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1830,18 +1993,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Tap_Quiet_Time(uint32_t Instance, uint8_t Time
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1872,18 +2023,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_Tap_Duration_Time(uint32_t Instance, uint8_t T
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -1935,12 +2074,6 @@ int32_t IKS01A3_MOTION_SENSOR_Enable_6D_Orientation(uint32_t Instance, IKS01A3_M
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -1983,12 +2116,6 @@ int32_t IKS01A3_MOTION_SENSOR_Disable_6D_Orientation(uint32_t Instance)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2038,12 +2165,6 @@ int32_t IKS01A3_MOTION_SENSOR_Set_6D_Orientation_Threshold(uint32_t Instance, ui
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2087,12 +2208,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_XL(uint32_t Instance, uint8_t *
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2142,12 +2257,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_XH(uint32_t Instance, uint8_t *
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2191,12 +2300,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_YL(uint32_t Instance, uint8_t *
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2246,12 +2349,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_YH(uint32_t Instance, uint8_t *
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2295,12 +2392,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_ZL(uint32_t Instance, uint8_t *
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2350,12 +2441,6 @@ int32_t IKS01A3_MOTION_SENSOR_Get_6D_Orientation_ZH(uint32_t Instance, uint8_t *
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2402,12 +2487,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Get_Num_Samples(uint32_t Instance, uint16_t *
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2438,18 +2517,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Get_Full_Status(uint32_t Instance, uint8_t *S
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2506,18 +2573,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Set_BDR(uint32_t Instance, uint32_t Function,
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2548,18 +2603,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Set_INT1_FIFO_Full(uint32_t Instance, uint8_t
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2596,18 +2639,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Set_Watermark_Level(uint32_t Instance, uint16
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2638,18 +2669,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Set_Stop_On_Fth(uint32_t Instance, uint8_t St
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2699,12 +2718,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Set_Mode(uint32_t Instance, uint8_t Mode)
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -2735,18 +2748,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Get_Tag(uint32_t Instance, uint8_t *Tag)
       {
         ret = BSP_ERROR_NONE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2800,18 +2801,6 @@ int32_t IKS01A3_MOTION_SENSOR_FIFO_Get_Axes(uint32_t Instance, uint32_t Function
       {
         ret = BSP_ERROR_WRONG_PARAM;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 
@@ -2947,18 +2936,6 @@ int32_t IKS01A3_MOTION_SENSOR_DRDY_Set_Mode(uint32_t Instance, uint8_t Mode)
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -3028,18 +3005,6 @@ int32_t IKS01A3_MOTION_SENSOR_DRDY_Enable_Interrupt(uint32_t Instance, uint32_t 
       break;
 #endif
 
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;
@@ -3092,18 +3057,6 @@ int32_t IKS01A3_MOTION_SENSOR_DRDY_Disable_Interrupt(uint32_t Instance, uint32_t
       {
         ret = BSP_ERROR_COMPONENT_FAILURE;
       }
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2DW12_0 == 1)
-    case IKS01A3_LIS2DW12_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
-      break;
-#endif
-
-#if (USE_IKS01A3_MOTION_SENSOR_LIS2MDL_0 == 1)
-    case IKS01A3_LIS2MDL_0:
-      ret = BSP_ERROR_COMPONENT_FAILURE;
       break;
 #endif
 

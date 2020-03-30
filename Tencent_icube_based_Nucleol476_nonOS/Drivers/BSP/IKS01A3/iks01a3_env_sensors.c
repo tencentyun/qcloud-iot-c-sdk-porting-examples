@@ -6,39 +6,13 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics International N.V.
+ * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted, provided that the following conditions are met:
- *
- * 1. Redistribution of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- * 3. Neither the name of STMicroelectronics nor the names of other
- *    contributors to this software may be used to endorse or promote products
- *    derived from this software without specific written permission.
- * 4. This software, including modifications and/or derivative works of this
- *    software, must execute solely and exclusively on microcontroller or
- *    microprocessor devices manufactured by or for STMicroelectronics.
- * 5. Redistribution and use of this software other than as permitted under
- *    this license is void and will automatically terminate your rights under
- *    this license.
- *
- * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
- * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
- * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -102,6 +76,10 @@ static int32_t STTS751_0_Probe(uint32_t Functions);
 
 #if (USE_IKS01A3_ENV_SENSOR_LPS33HW_0 == 1)
 static int32_t LPS33HW_0_Probe(uint32_t Functions);
+#endif
+
+#if (USE_IKS01A3_ENV_SENSOR_STTS22H_0 == 1)
+static int32_t STTS22H_0_Probe(uint32_t Functions);
 #endif
 
 /**
@@ -209,6 +187,31 @@ int32_t IKS01A3_ENV_SENSOR_Init(uint32_t Instance, uint32_t Functions)
 #if (USE_IKS01A3_ENV_SENSOR_LPS33HW_0 == 1)
     case IKS01A3_LPS33HW_0:
       if (LPS33HW_0_Probe(Functions) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_NO_INIT;
+      }
+      if (EnvDrv[Instance]->GetCapabilities(EnvCompObj[Instance], (void *)&cap) != BSP_ERROR_NONE)
+      {
+        return BSP_ERROR_UNKNOWN_COMPONENT;
+      }
+      if (cap.Temperature == 1U)
+      {
+        component_functions |= ENV_TEMPERATURE;
+      }
+      if (cap.Humidity == 1U)
+      {
+        component_functions |= ENV_HUMIDITY;
+      }
+      if (cap.Pressure == 1U)
+      {
+        component_functions |= ENV_PRESSURE;
+      }
+      break;
+#endif
+
+#if (USE_IKS01A3_ENV_SENSOR_STTS22H_0 == 1)
+    case IKS01A3_STTS22H_0:
+      if (STTS22H_0_Probe(Functions) != BSP_ERROR_NONE)
       {
         return BSP_ERROR_NO_INIT;
       }
@@ -864,6 +867,83 @@ static int32_t LPS33HW_0_Probe(uint32_t Functions)
   return ret;
 }
 #endif
+
+#if (USE_IKS01A3_ENV_SENSOR_STTS22H_0 == 1)
+/**
+ * @brief  Register Bus IOs for instance 2 if component ID is OK
+ * @param  Functions Environmental sensor functions. Could be :
+ *         - ENV_TEMPERATURE
+ * @retval BSP status
+ */
+static int32_t STTS22H_0_Probe(uint32_t Functions)
+{
+  STTS22H_IO_t            io_ctx;
+  uint8_t                 id;
+  int32_t                 ret = BSP_ERROR_NONE;
+  static STTS22H_Object_t stts22h_obj_0;
+  STTS22H_Capabilities_t  cap;
+
+  /* Configure the pressure driver */
+  io_ctx.BusType     = STTS22H_I2C_BUS; /* I2C */
+  io_ctx.Address     = STTS22H_I2C_ADD_H;
+  io_ctx.Init        = IKS01A3_I2C_Init;
+  io_ctx.DeInit      = IKS01A3_I2C_DeInit;
+  io_ctx.ReadReg     = IKS01A3_I2C_ReadReg;
+  io_ctx.WriteReg    = IKS01A3_I2C_WriteReg;
+  io_ctx.GetTick     = IKS01A3_GetTick;
+
+  if (STTS22H_RegisterBusIO(&stts22h_obj_0, &io_ctx) != STTS22H_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (STTS22H_ReadID(&stts22h_obj_0, &id) != STTS22H_OK)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else if (id != STTS22H_ID)
+  {
+    ret = BSP_ERROR_UNKNOWN_COMPONENT;
+  }
+  else
+  {
+    (void)STTS22H_GetCapabilities(&stts22h_obj_0, &cap);
+
+    EnvCtx[IKS01A3_STTS22H_0].Functions = ((uint32_t)cap.Temperature) | ((uint32_t)cap.Pressure << 1) | ((
+                                            uint32_t)cap.Humidity << 2);
+
+    EnvCompObj[IKS01A3_STTS22H_0] = &stts22h_obj_0;
+    /* The second cast (void *) is added to bypass Misra R11.3 rule */
+    EnvDrv[IKS01A3_STTS22H_0] = (ENV_SENSOR_CommonDrv_t *)(void *)&STTS22H_COMMON_Driver;
+
+    if ((ret == BSP_ERROR_NONE) && ((Functions & ENV_TEMPERATURE) == ENV_TEMPERATURE) && (cap.Temperature == 1U))
+    {
+      /* The second cast (void *) is added to bypass Misra R11.3 rule */
+      EnvFuncDrv[IKS01A3_STTS22H_0][FunctionIndex[ENV_TEMPERATURE]] = (ENV_SENSOR_FuncDrv_t *)(void *)&STTS22H_TEMP_Driver;
+
+      if (EnvDrv[IKS01A3_STTS22H_0]->Init(EnvCompObj[IKS01A3_STTS22H_0]) != STTS22H_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+      }
+      else
+      {
+        ret = BSP_ERROR_NONE;
+      }
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & ENV_HUMIDITY) == ENV_HUMIDITY))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+    if ((ret == BSP_ERROR_NONE) && ((Functions & ENV_PRESSURE) == ENV_PRESSURE))
+    {
+      /* Return an error if the application try to initialize a function not supported by the component */
+      ret = BSP_ERROR_COMPONENT_FAILURE;
+    }
+  }
+  return ret;
+}
+#endif
+
 
 /**
  * @}

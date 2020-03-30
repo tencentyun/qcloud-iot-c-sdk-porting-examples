@@ -2603,8 +2603,8 @@
 
 #include "mbedtls/check_config.h"
 
-#define calloc    HAL_Calloc
-#define free      HAL_Free
+//#define calloc    HAL_Calloc
+//#define free      HAL_Free
 
 
 #endif /* MBEDTLS_CONFIG_H */
